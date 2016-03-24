@@ -1,0 +1,19 @@
+{
+  "name": "scaffolding",
+  "version": "0.2.0",
+  "description": "set of libraries ready for building",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkabrown/scaffolding.git"
+  },
+  "author": "Nathan <nkabrown@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nkabrown/scaffolding/issues"
+  },
+  "homepage": "https://github.com/nkabrown/scaffolding#readme"
+}

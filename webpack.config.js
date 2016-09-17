@@ -1,7 +1,7 @@
 const debug = process.env.NODE_ENV != 'production';
 
 module.exports = {
-  context: __dirname + '/assets',
+  context: __dirname + '/src',
   entry: './js/app.js',
   output: {
     filename: 'app.bundle.js',
@@ -9,7 +9,7 @@ module.exports = {
   },
   devtools: debug ? 'sourcemaps' : null,
   eslint: {
-    configFile: '.eslintrc.json'
+    configFile: '.eslintrc'
   },
   module: {
     preLoaders: [

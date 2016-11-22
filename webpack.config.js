@@ -1,3 +1,4 @@
+const path = require('path');
 const debug = process.env.NODE_ENV != 'production';
 
 module.exports = {
@@ -5,7 +6,7 @@ module.exports = {
   entry: './js/app.js',
   output: {
     filename: 'app.bundle.js',
-    path: '../dist'
+    path: path.resolve(__dirname, 'dist')
   },
   devtools: debug ? 'sourcemaps' : null,
   eslint: {

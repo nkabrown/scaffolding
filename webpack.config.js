@@ -1,23 +1,52 @@
-const debug = process.env.NODE_ENV != 'production';
+const path = require('path')
 
-module.exports = {
-  context: __dirname + '/src',
-  entry: './js/app.js',
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const paths = {
+  DIST: path.resolve(__dirname, 'dist'),
+  SRC: path.resolve(__dirname, 'src'),
+  JS: path.resolve(__dirname, 'src/js')
+};
+
+const config = {
+  entry: path.join(paths.JS, 'app.js'),
   output: {
-    filename: 'app.bundle.js',
-    path: `${__dirname}/dist`
+    path: paths.DIST,
+    filename: 'app.bundle.js'
   },
-  devtools: debug ? 'sourcemaps' : null,
-  eslint: {
-    configFile: '.eslintrc'
-  },
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: path.join(paths.SRC, 'index.html')
+    }),
+    new ExtractTextPlugin('style.bundle.css')
+  ],
   module: {
-    preLoaders: [
-      { test: /\.js?$/, exclude: /(node_modules|bower_components)/, loader: 'eslint' }
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          'babel-loader',
+        ],
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          use: 'css-loader'
+        })
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
     ],
-    loader: [
-      { test: /\.js?$/, exclude: /(node_modules|bower_components)/, loader: 'babel', query: { presets: ['es2015', 'stage-1'] } },
-      { test: /\.css?$/, loader: 'style!css' }
-    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
-}
+};
+
+module.exports = config;

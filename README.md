@@ -7,4 +7,4 @@ SCAFFOLDING
 
 2nd Iteration  — Annalect/Spotify hackathon UK Apr '16
 
-3rd Iteration — Update to React 16.0/Webpack 3
+3rd Iteration — Update to React 16.0/Webpack 3 Nov '17
